@@ -1,0 +1,1 @@
+cmake -G "Xcode" -DBUILD_TESTING="OFF" ../..
