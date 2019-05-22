@@ -4,7 +4,5 @@ set (CMAKE_CXX_STANDARD 17)
 
 project(shademachine)
 
-include(CTest)
-
 add_subdirectory(deps)
 add_subdirectory(src)

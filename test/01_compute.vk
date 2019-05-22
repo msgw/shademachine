@@ -1,0 +1,35 @@
+#version 450
+
+layout(binding=0) uniform writeonly lowp image2D output;
+
+precision highp float;
+
+layout(binding=1) uniform lowp sampler2D inTexture1;
+
+// Transform uniforms
+layout(std140, binding = 0) uniform Transforms {
+    vec4 offset1;
+    vec4 offset2;
+};
+
+#include <math.vk>
+
+vec4 transform(vec4 color, vec4 offset)
+{
+    return sin(PI * (color + offset));
+}
+
+void main() {
+    ivec2 outputSize = imageSize(destImage);
+    
+    vec2 normalized = vec2(gl_GlobalInvocationID.xy) / vec2(outputSize);
+    normalized = normalized + vec2(0.5)/vec2(outputSize);
+    
+    vec4 color = texture(inTexture1, normalized);
+    vec4 transform1 = transform(color, offset1);
+    vec4 transform2 = transform(color, offset2);
+
+    vec4 mixed = mix(transform1, transform2, transform1-transform2);
+    
+    imageStore(destImage, ivec2(gl_GlobalInvocationID.xy), mixed);
+}
