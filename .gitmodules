@@ -1,6 +1,6 @@
 [submodule "deps/cxxopts"]
 	path = deps/cxxopts
-	url = git@gitlab.com:msgw/external/cxxopts.git
+url=http://gitlab.com/msgw/external/cxxopts.git
 [submodule "deps/SPIRV-Headers"]
 	path = deps/SPIRV-Headers
 	url = git@gitlab.com:msgw/external/SPIRV-Headers.git

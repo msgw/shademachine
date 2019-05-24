@@ -4,3 +4,6 @@ build/mac/_deps
 build/mac/CMakeFiles
 build/mac/CMakeScripts
 build/mac/shademachine.xcodeproj
+build/mac/deps
+build/mac/src
+build/mac/shademachine.build
