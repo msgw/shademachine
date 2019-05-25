@@ -6,7 +6,11 @@ set(SHADEMACHINE_SOURCES
     shademachine.cpp
 )
 
-add_executable(shademachine ${SHADEMACHINE_SOURCES})
+if(WIN32)
+    add_executable(shademachine WIN32 ${SHADEMACHINE_SOURCES})
+else()
+    add_executable(shademachine ${SHADEMACHINE_SOURCES})
+endif()
 
 target_link_libraries(shademachine
     cxxopts
