@@ -1,4 +1,4 @@
-#include "filesystem.h"
+#include "filepath.h"
 
 using namespace std;
 
@@ -7,19 +7,21 @@ using namespace std;
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <direct.h>
+#include <string.h>
 
-list<string> filesystem::list_directory(string path)
+list<string> filepath::list_directory(string path)
 {
     list<string> directory_list;
     
     WIN32_FIND_DATAA file_info;
-    HANDLE hFind = FindFirstFileA((path + "\*").c_str(), &file_info);
+    HANDLE hFind = FindFirstFileA((path + "\\*").c_str(), &file_info);
     
     if( hFind != INVALID_HANDLE_VALUE )
     {
         do
         {
-            list.push_back(string(file_info.cFileName));
+			string filename(file_info.cFileName, strlen(file_info.cFileName));
+			directory_list.push_back(filename);
         } while (FindNextFileA(hFind, &file_info));
         FindClose(hFind);
     }
@@ -27,7 +29,7 @@ list<string> filesystem::list_directory(string path)
     return directory_list;
 }
 
-string filesystem::get_absolute_path(string file)
+string filepath::get_absolute_path(string file)
 {
     char path[2048];
     GetFullPathNameA(file.c_str(), 2048, path, NULL);
@@ -35,7 +37,6 @@ string filesystem::get_absolute_path(string file)
     
     return absolute;
 }
-
 
 #define makedir(dir) _mkdir(dir)
 
@@ -74,8 +75,7 @@ string filesystem::get_absolute_path(string file)
 
 #endif
 
-bool filesystem::make_directory(std::string path)
+bool filepath::make_directory(std::string path)
 {
-    makedir(path.c_str());
-    return true;
+    return (makedir(path.c_str()) == 0);
 }

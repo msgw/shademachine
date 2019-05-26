@@ -1,13 +1,13 @@
 set(SHADEMACHINE_SOURCES
     main.cpp
-    filesystem.h
-    filesystem.cpp
+    filepath.h
+    filepath.cpp
     shademachine.h
     shademachine.cpp
 )
 
 if(WIN32)
-    add_executable(shademachine WIN32 ${SHADEMACHINE_SOURCES})
+    add_executable(shademachine ${SHADEMACHINE_SOURCES})
 else()
     add_executable(shademachine ${SHADEMACHINE_SOURCES})
 endif()

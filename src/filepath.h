@@ -3,7 +3,7 @@
 #include <string>
 #include <list>
 
-class filesystem
+class filepath
 {
 public:
     static bool make_directory(std::string path);

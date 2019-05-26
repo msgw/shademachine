@@ -14,7 +14,7 @@
 #include <spirv_hlsl.hpp>
 #include <spirv_cpp.hpp>
 
-#include "filesystem.h"
+#include "filepath.h"
 
 using namespace std;
 
@@ -77,7 +77,7 @@ public:
         {
             for(auto includeDir : mIncludeDirs)
             {
-                shaderFile = filesystem::get_absolute_path(includeDir + "/" + requested_source);
+                shaderFile = filepath::get_absolute_path(includeDir + "/" + requested_source);
                 shaderSource = ReadShader(shaderFile);
                 
                 if(!shaderSource.empty())
@@ -191,7 +191,7 @@ size_t ShadeMachine::CompileSource(const string& source, const string& name, uin
 size_t WriteFile(string path, string name, string ext, string contents)
 {
     // create the root output directory (since fstream::open won't do it for us)
-    filesystem::make_directory(path.c_str());
+    filepath::make_directory(path.c_str());
     
     string filename = path + "/" + name + "." + ext;
     ofstream filestream;
@@ -336,7 +336,7 @@ void ShadeMachine::SetOutputPath(string shaderOutputPath)
 
 ShadeMachine::Error ShadeMachine::ProcessSource(string shaderFile, Shader type)
 {
-    string name = filesystem::get_absolute_path(shaderFile);
+    string name = filepath::get_absolute_path(shaderFile);
     mShaderRootPath = name;
     
     bool hlsl = false;
@@ -355,7 +355,7 @@ ShadeMachine::Error ShadeMachine::ProcessSource(string shaderFile, Shader type)
     }
     
     // create the root output directory (since fstream::open won't do it for us)
-    filesystem::make_directory(mShaderOutputPath.c_str());
+    filepath::make_directory(mShaderOutputPath.c_str());
     
     string ext;
     

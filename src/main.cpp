@@ -7,7 +7,7 @@
 #include <cxxopts.hpp>
 
 #include "shademachine.h"
-#include "filesystem.h"
+#include "filepath.h"
 
 int main(int argc, char * argv[])
 {
@@ -70,7 +70,7 @@ int main(int argc, char * argv[])
         }
         
         // list of files to transpile
-        std::list<std::string> file_list = filesystem::list_directory(result["b"].as<std::string>());
+		std::list<std::string> file_list = filepath::list_directory(".");// result["."].as<std::string>());
             
         for(std::string file : file_list)
         {
@@ -94,14 +94,18 @@ int main(int argc, char * argv[])
             {
                 type = ShadeMachine::Vertex;
             }
-            if(typeFragment)
+            else if(typeFragment)
             {
                 type = ShadeMachine::Fragment;
             }
-            if(typeCompute)
+            else if(typeCompute)
             {
                 type = ShadeMachine::Compute;
             }
+			else
+			{
+				continue;
+			}
             
             // set, and fire.
             machine.SetOutputPath(result["output"].as<std::string>());
