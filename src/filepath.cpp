@@ -45,7 +45,7 @@ string filepath::get_absolute_path(string file)
 #include <sys/stat.h>
 #include <dirent.h>
 
-list<string> filesystem::list_directory(string path)
+list<string> filepath::list_directory(string path)
 {
     list<string> directory_list;
     
@@ -62,7 +62,7 @@ list<string> filesystem::list_directory(string path)
     return directory_list;
 }
 
-string filesystem::get_absolute_path(string file)
+string filepath::get_absolute_path(string file)
 {
     char path[2048];
     string absolute(realpath(file.c_str(), path));
