@@ -7,9 +7,9 @@ add_subdirectory(cxxopts)
 
 option(SPIRV_SKIP_TESTS "Set to ON to build tests" OFF)
 
-#add_subdirectory(SPIRV-Headers)
+#add_subdirectory(spirv-headers)
 
-#add_subdirectory(SPIRV-Tools)
+#add_subdirectory(spirv-tools)
 
 #add_subdirectory(glslang)
 
@@ -21,5 +21,5 @@ add_subdirectory(shaderc)
 
 option(SPIRV_CROSS_ENABLE_TESTS "Enable SPIRV-Cross tests." OFF)
 
-add_subdirectory(SPIRV-Cross)
+add_subdirectory(spirv-cross)
 
