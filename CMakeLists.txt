@@ -1,8 +1,10 @@
 cmake_minimum_required (VERSION 3.12)
 
-set (CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 17)
 
 project(shademachine)
+
+include(CTest)
 
 foreach(flag_var
     CMAKE_C_FLAGS CMAKE_C_FLAGS_DEBUG CMAKE_C_FLAGS_RELEASE
@@ -16,4 +18,9 @@ foreach(flag_var
 endforeach(flag_var)
 
 add_subdirectory(deps)
+
+enable_testing()
+
 add_subdirectory(src)
+
+add_subdirectory(test)

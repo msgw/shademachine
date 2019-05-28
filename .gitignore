@@ -23,3 +23,6 @@ test/hlsl/
 test/metal/
 test/ref/
 test/vulkan/
+CTestTestfile.cmake
+DartConfiguration.tcl
+build/mac/Testing
