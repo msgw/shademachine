@@ -1,18 +1,18 @@
 [submodule "deps/cxxopts"]
 	path = deps/cxxopts
 url=http://gitlab.com/msgw/external/cxxopts.git
-[submodule "deps/SPIRV-Headers"]
-	path = deps/SPIRV-Headers
-url=http://gitlab.com/msgw/external/SPIRV-Headers.git
-[submodule "deps/SPIRV-Tools"]
-	path = deps/SPIRV-Tools
-url=http://gitlab.com/msgw/external/SPIRV-Tools.git
 [submodule "deps/glslang"]
 	path = deps/glslang
 url=http://gitlab.com/msgw/external/glslang.git
-[submodule "deps/SPIRV-Cross"]
-	path = deps/SPIRV-Cross
-url=http://gitlab.com/msgw/external/SPIRV-Cross.git
 [submodule "deps/shaderc"]
 	path = deps/shaderc
 url=http://gitlab.com/msgw/external/shaderc.git
+[submodule "deps/spirv-cross"]
+	path = deps/spirv-cross
+	url = http://gitlab.com/msgw/external/SPIRV-Cross.git
+[submodule "deps/spirv-headers"]
+	path = deps/spirv-headers
+	url = http://gitlab.com/msgw/external/SPIRV-Headers.git
+[submodule "deps/spirv-tools"]
+	path = deps/spirv-tools
+	url = http://gitlab.com/msgw/external/SPIRV-Tools.git
